@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCT 好き顔9選</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f5;
+  color: #222;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+}
+
+.container {
+  width: min(92%, 520px);
+  margin: auto;
+  padding: 35px 0 50px;
+}
+
+.logo {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin: 14px 0 30px;
+  line-height: 1.7;
+}
+
+.green {
+  color: #8aaa91;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.start-box {
+  background: white;
+  border-radius: 24px;
+  padding: 30px 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+.start-box p {
+  text-align: center;
+  line-height: 1.8;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.start-button {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  padding: 17px;
+  border-radius: 50px;
+  background: #8aaa91;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.progress {
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.question {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.07);
+  transition: transform .15s;
+}
+
+.card:active {
+  transform: scale(.97);
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #dfe7e1, #f5f6f4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #718277;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  text-align: center;
+  font-weight: bold;
+  margin: 12px 0 4px;
+}
+
+.group {
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.result-title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 18px;
+  padding: 13px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.rank {
+  width: 35px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.result-photo {
+  width: 55px;
+  height: 70px;
+  border-radius: 10px;
+  background: #e8eee9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718277;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.result-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.result-name {
+  font-weight: bold;
+}
+
+.result-group {
+  font-size: 11px;
+  color: #999;
+  margin-top: 3px;
+}
+
+.again {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  border-radius: 50px;
+  background: #222;
+  color: white;
+  font-size: 16px;
+}
+
+.share {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px;
+  border-radius: 50px;
+  background: white;
+  color: #222;
+  font-size: 15px;
+  border: 1px solid #ddd;
+}
+
+.note {
+  text-align: center;
+  color: #aaa;
+  font-size: 11px;
+  margin-top: 25px;
+  line-height: 1.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- START -->
+  <section id="start" class="screen active">
+    <div class="logo">NCT</div>
+
+    <h1>好き顔<span class="green">9</span>選</h1>
+
+    <p class="subtitle">
+      NCTの中から<br>
+      あなたの「好きな顔」TOP9を決めよう。
+    </p>
+
+    <div class="start-box">
+      <p>
+        推しだから、ではなく<br>
+        <strong>顔だけで直感勝負。</strong><br><br>
+        「こっちの顔が好き！」と思った方を<br>
+        タップしてください。
+      </p>
+
+      <button class="start-button" onclick="startGame()">
+        START
+      </button>
+    </div>
+
+    <p class="note">
+      NCT 127 / NCT DREAM / WayV / NCT WISH<br>
+      現行メンバーを対象にしています。
+    </p>
+  </section>
+
+
+  <!-- GAME -->
+  <section id="game" class="screen">
+
+    <div class="logo">NCT SUKIGAO 9</div>
+
+    <div id="progress" class="progress"></div>
+
+    <div class="question">
+      どっちの顔が好き？
+    </div>
+
+    <div id="cards" class="cards"></div>
+
+    <p class="note">
+      名前や推しは一旦忘れて、直感で選んでね。
+    </p>
+
+  </section>
+
+
+  <!-- RESULT -->
+  <section id="result" class="screen">
+
+    <div class="logo">YOUR RESULT</div>
+
+    <h2 class="result-title">
+      NCT<br>
+      <span class="green">好き顔 TOP 9</span>
+    </h2>
+
+    <div id="results"></div>
+
+    <button class="share" onclick="shareResult()">
+      結果をシェアする
+    </button>
+
+    <button class="again" onclick="location.reload()">
+      もう一度やる
+    </button>
+
+  </section>
+
+</div>
+
+
+<script>
+
+const members = [
+
+  // NCT 127
+  {name:"Johnny", group:"NCT 127", image:"images/johnny.jpg"},
+  {name:"Taeyong", group:"NCT 127", image:"images/taeyong.jpg"},
+  {name:"Yuta", group:"NCT 127", image:"images/yuta.jpg"},
+  {name:"Doyoung", group:"NCT 127", image:"images/doyoung.jpg"},
+  {name:"Jaehyun", group:"NCT 127", image:"images/jaehyun.jpg"},
+  {name:"Jungwoo", group:"NCT 127", image:"images/jungwoo.jpg"},
+  {name:"Haechan", group:"NCT 127 / DREAM", image:"images/haechan.jpg"},
+
+  // NCT DREAM
+  {name:"Renjun", group:"NCT DREAM", image:"images/renjun.jpg"},
+  {name:"Jeno", group:"NCT DREAM", image:"images/jeno.jpg"},
+  {name:"Jaemin", group:"NCT DREAM", image:"images/jaemin.jpg"},
+  {name:"Chenle", group:"NCT DREAM", image:"images/chenle.jpg"},
+  {name:"Jisung", group:"NCT DREAM", image:"images/jisung.jpg"},
+
+  // WayV
+  {name:"Kun", group:"WayV", image:"images/kun.jpg"},
+  {name:"Ten", group:"WayV", image:"images/ten.jpg"},
+  {name:"Xiaojun", group:"WayV", image:"images/xiaojun.jpg"},
+  {name:"Hendery", group:"WayV", image:"images/hendery.jpg"},
+  {name:"Yangyang", group:"WayV", image:"images/yangyang.jpg"},
+
+  // NCT WISH
+  {name:"Sion", group:"NCT WISH", image:"images/sion.jpg"},
+  {name:"Riku", group:"NCT WISH", image:"images/riku.jpg"},
+  {name:"Yushi", group:"NCT WISH", image:"images/yushi.jpg"},
+  {name:"Jaehee", group:"NCT WISH", image:"images/jaehee.jpg"},
+  {name:"Ryo", group:"NCT WISH", image:"images/ryo.jpg"},
+  {name:"Sakuya", group:"NCT WISH", image:"images/sakuya.jpg"}
+
+];
+
+let ranking = [];
+let remaining = [];
+let current = null;
+let compareCount = 0;
+
+
+// 配列をシャッフル
+function shuffle(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+
+// ゲーム開始
+function startGame() {
+
+  document.getElementById("start").classList.remove("active");
+  document.getElementById("game").classList.add("active");
+
+  ranking = [];
+  remaining = shuffle(members);
+  compareCount = 0;
+
+  nextMember();
+}
+
+
+// 次のメンバーをランキングに入れる
+function nextMember() {
+
+  if (remaining.length === 0) {
+    showResult();
+    return;
+  }
+
+  current = remaining.shift();
+
+  if (ranking.length === 0) {
+    ranking.push(current);
+    nextMember();
+    return;
+  }
+
+  // 挿入する位置を決める
+  let low = 0;
+  let high = ranking.length - 1;
+
+  // 二分探索
+  if (low > high) {
+    insertMember(0);
+    return;
+  }
+
+  showComparison(low, high);
+}
+
+
+// 比較画面
+function showComparison(low, high) {
+
+  if (low > high) {
+    insertMember(low);
+    return;
+  }
+
+  let middle = Math.floor((low + high) / 2);
+
+  current.low = low;
+  current.high = high;
+  current.middle = middle;
+
+  const opponent = ranking[middle];
+
+  document.getElementById("progress").textContent =
+    `${ranking.length + 1}人目を順位付け中`;
+
+  const cards = document.getElementById("cards");
+
+  cards.innerHTML = `
+    <button class="card" onclick="chooseCurrent()">
+      <div class="photo">
+        ${makePhoto(current)}
+      </div>
+      <div class="name">${current.name}</div>
+      <div class="group">${current.group}</div>
+    </button>
+
+    <button class="card" onclick="chooseOpponent()">
+      <div class="photo">
+        ${makePhoto(opponent)}
+      </div>
+      <div class="name">${opponent.name}</div>
+      <div class="group">${opponent.group}</div>
+    </button>
+  `;
+
+  current.opponent = opponent;
+}
+
+
+// 写真表示
+function makePhoto(member) {
+
+  return `
+    <img src="${member.image}"
+      alt="${member.name}"
+      onerror="this.style.display='none'; this.parentElement.textContent='${member.name.charAt(0)}';">
+  `;
+}
+
+
+// 今のメンバーが好き
+function chooseCurrent() {
+
+  const middle = current.middle;
+
+  showComparison(
+    current.low,
+    middle - 1
+  );
+}
+
+
+// 相手の方が好き
+function chooseOpponent() {
+
+  const middle = current.middle;
+
+  showComparison(
+    middle + 1,
+    current.high
+  );
+}
+
+
+// ランキングに挿入
+function insertMember(position) {
+
+  ranking.splice(position, 0, current);
+
+  nextMember();
+}
+
+
+// 結果
+function showResult() {
+
+  document.getElementById("game").classList.remove("active");
+  document.getElementById("result").classList.add("active");
+
+  const top9 = ranking.slice(0, 9);
+
+  const results = document.getElementById("results");
+
+  results.innerHTML = top9.map((member, index) => {
+
+    let medal = "";
+
+    if (index === 0) medal = "🥇";
+    if (index === 1) medal = "🥈";
+    if (index === 2) medal = "🥉";
+
+    return `
+      <div class="result-card">
+
+        <div class="rank">
+          ${medal || (index + 1)}
+        </div>
+
+        <div class="result-photo">
+          ${makePhoto(member)}
+        </div>
+
+        <div>
+          <div class="result-name">
+            ${member.name}
+          </div>
+
+          <div class="result-group">
+            ${member.group}
+          </div>
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+
+}
+
+
+// シェア
+function shareResult() {
+
+  const top9 = ranking.slice(0, 9);
+
+  const text =
+    "私のNCT好き顔TOP9 💚\n\n" +
+    top9.map((m, i) =>
+      `${i + 1}. ${m.name}`
+    ).join("\n");
+
+  if (navigator.share) {
+
+    navigator.share({
+      title: "NCT 好き顔9選",
+      text: text
+    });
+
+  } else {
+
+    navigator.clipboard.writeText(text);
+
+    alert("結果をコピーしました！");
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
